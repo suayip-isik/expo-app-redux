@@ -21,7 +21,10 @@ const LoginScreen: React.FC = () => {
           <View style={{ gap: 24, alignItems: "center" }}>
             <CustomTextInput type="userName" />
             <CustomTextInput type="password" />
-            <CustomButton onPress={() => console.log("running")} />
+            <CustomButton
+              title="Giriş Yap"
+              onPress={() => console.log("running")}
+            />
           </View>
         )}
       </Formik>

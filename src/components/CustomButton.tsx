@@ -3,10 +3,10 @@ import React from "react";
 import { COLOR_IOS_BLUE, COLOR_WHITE } from "../theme";
 import { ICustomButton } from "./types";
 
-const CustomButton: React.FC<ICustomButton> = ({ onPress }) => {
+const CustomButton: React.FC<ICustomButton> = ({ onPress, title }) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.title}>Giriş Yap</Text>
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
 };

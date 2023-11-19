@@ -6,4 +6,5 @@ export interface ICustomTextInput {
 
 export interface ICustomButton {
   onPress: ((event: GestureResponderEvent) => void) | undefined;
+  title: string;
 }
