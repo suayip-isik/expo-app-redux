@@ -5,8 +5,11 @@ import { MyFormValues } from "../@types";
 import { CustomButton, CustomTextInput } from "../components";
 import { useGlobalStyles } from "../hooks";
 import { COLOR_BLACK, COLOR_WHITE } from "../theme";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const LoginScreen: React.FC = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const initialValues: MyFormValues = { userName: "", password: "" };
   return (
     <View style={[useGlobalStyles.page, styles.pages]}>
@@ -35,7 +38,7 @@ const LoginScreen: React.FC = () => {
                   backgroundColor: COLOR_WHITE,
                 }}
                 customTitleStyle={{ color: COLOR_BLACK }}
-                onPress={() => console.log("running")}
+                onPress={() => navigation.navigate("SignUpScreen")}
               />
             </View>
           </View>
