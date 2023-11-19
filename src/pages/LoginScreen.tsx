@@ -1,6 +1,5 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import useGlobalStyles from "../hooks/useGlobalStyles";
 
 const LoginScreen = () => {
   return (
