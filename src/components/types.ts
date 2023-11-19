@@ -6,7 +6,8 @@ import {
 } from "react-native";
 
 export interface ICustomTextInput {
-  type: "userName" | "password";
+  type?: "userName" | "password";
+  placeholder: string | undefined;
 }
 
 export interface ICustomButton {

@@ -23,8 +23,8 @@ const LoginScreen: React.FC = () => {
       >
         {({ handleChange, handleBlur, handleSubmit, handleReset }) => (
           <View style={{ gap: 24, alignItems: "center" }}>
-            <CustomTextInput type="userName" />
-            <CustomTextInput type="password" />
+            <CustomTextInput placeholder="User Name" type="userName" />
+            <CustomTextInput placeholder="Password" type="password" />
             <View style={{ flexDirection: "row", gap: 4 }}>
               <CustomButton
                 title="Giriş Yap"
