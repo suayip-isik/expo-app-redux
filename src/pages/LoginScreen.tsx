@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Formik } from "formik";
 import { MyFormValues } from "../@types";
-import { CustomTextInput } from "../components";
+import { CustomButton, CustomTextInput } from "../components";
 import { useGlobalStyles } from "../hooks";
 
 const LoginScreen: React.FC = () => {
@@ -18,9 +18,10 @@ const LoginScreen: React.FC = () => {
         }}
       >
         {({ handleChange, handleBlur, handleSubmit, handleReset }) => (
-          <View style={{ gap: 24 }}>
+          <View style={{ gap: 24, alignItems: "center" }}>
             <CustomTextInput type="userName" />
             <CustomTextInput type="password" />
+            <CustomButton onPress={() => console.log("running")} />
           </View>
         )}
       </Formik>

@@ -2,7 +2,7 @@ import { StyleSheet, TextInput, View } from "react-native";
 import React from "react";
 import UserIcon from "../../assets/icons/UserIcon.svg";
 import PasswordIcon from "../../assets/icons/PasswordIcon.svg";
-import { COLOR_BLACK, LIGHT_GRAY } from "../theme";
+import { COLOR_BLACK, COLOR_LIGHT_GRAY } from "../theme";
 import { ICustomTextInput } from "./types";
 
 const CustomTextInput: React.FC<ICustomTextInput> = ({ type }) => {
@@ -14,8 +14,9 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({ type }) => {
         <PasswordIcon width={20} height={20} color={COLOR_BLACK} />
       )}
 
-      <TextInput secureTextEntry={type === "password"}
-        style={{ flex: 1, fontSize: 16, paddingLeft: 8 }}
+      <TextInput
+        secureTextEntry={type === "password"}
+        style={styles.input}
         placeholder={type === "userName" ? "User Name" : "Password"}
       />
     </View>
@@ -27,10 +28,15 @@ export { CustomTextInput };
 const styles = StyleSheet.create({
   container: {
     borderBottomWidth: 1,
-    borderColor: LIGHT_GRAY,
+    borderColor: COLOR_LIGHT_GRAY,
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: 4,
     borderRadius: 4,
+  },
+  input: {
+    flex: 1,
+    fontSize: 16,
+    paddingLeft: 8,
   },
 });
