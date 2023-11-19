@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import { MyFormValues } from "../@types";
 import { CustomButton, CustomTextInput } from "../components";
 import { useGlobalStyles } from "../hooks";
+import { COLOR_BLACK, COLOR_WHITE } from "../theme";
 
 const LoginScreen: React.FC = () => {
   const initialValues: MyFormValues = { userName: "", password: "" };
@@ -21,10 +22,22 @@ const LoginScreen: React.FC = () => {
           <View style={{ gap: 24, alignItems: "center" }}>
             <CustomTextInput type="userName" />
             <CustomTextInput type="password" />
-            <CustomButton
-              title="Giriş Yap"
-              onPress={() => console.log("running")}
-            />
+            <View style={{ flexDirection: "row", gap: 4 }}>
+              <CustomButton
+                title="Giriş Yap"
+                customButtonStyle={{ flex: 1 }}
+                onPress={() => console.log("running")}
+              />
+              <CustomButton
+                title="Üye Ol"
+                customButtonStyle={{
+                  borderWidth: 1,
+                  backgroundColor: COLOR_WHITE,
+                }}
+                customTitleStyle={{ color: COLOR_BLACK }}
+                onPress={() => console.log("running")}
+              />
+            </View>
           </View>
         )}
       </Formik>
