@@ -14,7 +14,7 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({ type }) => {
         <PasswordIcon width={20} height={20} color={COLOR_BLACK} />
       )}
 
-      <TextInput
+      <TextInput secureTextEntry={type === "password"}
         style={{ flex: 1, fontSize: 16, paddingLeft: 8 }}
         placeholder={type === "userName" ? "User Name" : "Password"}
       />
