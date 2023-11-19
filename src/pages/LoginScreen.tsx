@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Formik } from "formik";
-import { MyFormValues } from "../@types";
+import { MyLoginFormValues } from "../@types";
 import { CustomButton, CustomTextInput } from "../components";
 import { useGlobalStyles } from "../hooks";
 import { COLOR_BLACK, COLOR_WHITE } from "../theme";
@@ -10,7 +10,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const initialValues: MyFormValues = { userName: "", password: "" };
+  const initialValues: MyLoginFormValues = { userName: "", password: "" };
   return (
     <View style={[useGlobalStyles.page, styles.pages]}>
       <Formik
@@ -36,12 +36,13 @@ const LoginScreen: React.FC = () => {
             />
             <View style={{ flexDirection: "row", gap: 4 }}>
               <CustomButton
-                title="Giriş Yap"
+                title="Login"
                 customButtonStyle={{ flex: 1 }}
+                customTitleStyle={{ textAlign: "center" }}
                 onPress={handleSubmit as any}
               />
               <CustomButton
-                title="Üye Ol"
+                title="Sign Up"
                 customButtonStyle={{
                   borderWidth: 1,
                   backgroundColor: COLOR_WHITE,
