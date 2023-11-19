@@ -2,7 +2,7 @@ import { StyleSheet, TextInput, View } from "react-native";
 import React from "react";
 import UserIcon from "../../assets/icons/UserIcon.svg";
 import PasswordIcon from "../../assets/icons/PasswordIcon.svg";
-import { COLOR_BLACK } from "../theme";
+import { COLOR_BLACK, LIGHT_GRAY } from "../theme";
 import { ICustomTextInput } from "./types";
 
 const CustomTextInput: React.FC<ICustomTextInput> = ({ type }) => {
@@ -27,7 +27,7 @@ export { CustomTextInput };
 const styles = StyleSheet.create({
   container: {
     borderBottomWidth: 1,
-    borderColor: "lightgray",
+    borderColor: LIGHT_GRAY,
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: 4,
