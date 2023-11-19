@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import React from "react";
 import { Formik } from "formik";
 import { MyLoginFormValues } from "../@types";
@@ -7,16 +7,26 @@ import { useGlobalStyles } from "../hooks";
 import { COLOR_BLACK, COLOR_WHITE } from "../theme";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useSelector } from "react-redux";
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const user = useSelector(({ user }) => user);
+
   const initialValues: MyLoginFormValues = { userName: "", password: "" };
   return (
     <View style={[useGlobalStyles.page, styles.pages]}>
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          console.log({ values });
+          if (
+            values.userName === user.userName &&
+            values.password === user.password
+          ) {
+            navigation.navigate("HomeScreen");
+          } else {
+            Alert.alert("Warning", "Username or Password is Wrong");
+          }
         }}
         onReset={() => navigation.navigate("SignUpScreen")}
       >

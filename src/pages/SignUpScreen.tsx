@@ -1,13 +1,20 @@
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import React from "react";
 import { useGlobalStyles } from "../hooks";
 import { CustomButton, CustomTextInput } from "../components";
 import { Formik } from "formik";
-import { MySignUpFormValues } from "../@types";
 import { COLOR_BLACK, COLOR_WHITE } from "../theme";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/slice/UserSlice";
+import { IUser } from "../redux/types";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const SignUpScreen = () => {
-  const initialValues: MySignUpFormValues = {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const dispatch = useDispatch();
+
+  const initialValues: IUser = {
     name: "",
     surName: "",
     age: "",
@@ -15,11 +22,17 @@ const SignUpScreen = () => {
     userName: "",
     password: "",
   };
+
   return (
     <View style={[useGlobalStyles.page, styles.page]}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          dispatch(addUser(values));
+          Alert.alert("Successful", "Your account has been created", [
+            { text: "Okey", onPress: () => navigation.navigate("LoginScreen") },
+          ]);
+        }}
       >
         {({ handleChange, handleReset, handleSubmit, values }) => (
           <>
