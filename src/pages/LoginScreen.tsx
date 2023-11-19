@@ -15,21 +15,30 @@ const LoginScreen: React.FC = () => {
     <View style={[useGlobalStyles.page, styles.pages]}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          console.log({ values, actions });
-          alert(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false);
+        onSubmit={(values) => {
+          console.log({ values });
         }}
+        onReset={() => navigation.navigate("SignUpScreen")}
       >
-        {({ handleChange, handleBlur, handleSubmit, handleReset }) => (
+        {({ handleChange, handleBlur, handleSubmit, handleReset, values }) => (
           <View style={{ gap: 24, alignItems: "center" }}>
-            <CustomTextInput placeholder="User Name" type="userName" />
-            <CustomTextInput placeholder="Password" type="password" />
+            <CustomTextInput
+              placeholder="User Name"
+              type="userName"
+              onChangeText={handleChange("userName")}
+              value={values.userName}
+            />
+            <CustomTextInput
+              placeholder="Password"
+              type="password"
+              onChangeText={handleChange("password")}
+              value={values.password}
+            />
             <View style={{ flexDirection: "row", gap: 4 }}>
               <CustomButton
                 title="Giriş Yap"
                 customButtonStyle={{ flex: 1 }}
-                onPress={() => console.log("running")}
+                onPress={handleSubmit as any}
               />
               <CustomButton
                 title="Üye Ol"
@@ -38,7 +47,7 @@ const LoginScreen: React.FC = () => {
                   backgroundColor: COLOR_WHITE,
                 }}
                 customTitleStyle={{ color: COLOR_BLACK }}
-                onPress={() => navigation.navigate("SignUpScreen")}
+                onPress={handleReset as any}
               />
             </View>
           </View>

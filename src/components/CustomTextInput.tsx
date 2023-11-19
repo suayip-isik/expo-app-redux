@@ -5,7 +5,12 @@ import PasswordIcon from "../../assets/icons/PasswordIcon.svg";
 import { COLOR_BLACK, COLOR_LIGHT_GRAY } from "../theme";
 import { ICustomTextInput } from "./types";
 
-const CustomTextInput: React.FC<ICustomTextInput> = ({ type, placeholder }) => {
+const CustomTextInput: React.FC<ICustomTextInput> = ({
+  type,
+  placeholder,
+  onChangeText,
+  value,
+}) => {
   return (
     <View style={styles.container}>
       {type === "userName" ? (
@@ -20,6 +25,8 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({ type, placeholder }) => {
         secureTextEntry={type === "password"}
         style={styles.input}
         placeholder={placeholder}
+        onChangeText={onChangeText}
+        value={value}
       />
     </View>
   );
